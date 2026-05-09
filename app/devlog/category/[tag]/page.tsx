@@ -73,7 +73,7 @@ export default async function CategoryPage({
                   >
                     <div className="mb-2 flex flex-wrap gap-2 font-mono text-xs">
                       <span className="bg-[#c9c0aa] px-2 py-1">
-                        {post.date}
+                        {post.displayDate}
                       </span>
 
                       {post.tags.map((postTag) => (

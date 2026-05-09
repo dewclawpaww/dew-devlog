@@ -144,7 +144,7 @@ export default function Home() {
                     >
                       <div className="mb-2 flex flex-wrap gap-2 font-mono text-xs">
                         <span className="bg-[#c9c0aa] px-2 py-1">
-                          {post.date}
+                          {post.displayDate}
                         </span>
                         {post.tags.map((tag) => (
                           <a
@@ -192,7 +192,7 @@ export default function Home() {
                         href={`/devlog/${post.slug}`}
                       >
                         <span className="mb-1 block font-mono text-xs font-bold text-[#8b5e65]">
-                          {post.date}
+                          {post.displayDate}
                           {post.tags.length > 0
                             ? ` · ${post.tags.join(", ")}`
                             : ""}

@@ -100,7 +100,9 @@ export default async function DevlogPostPage({
 
             <div className="mt-6 border-2 border-[#2d241f] bg-[#eee6d6] p-4">
               <div className="mb-3 flex flex-wrap gap-2 font-mono text-xs">
-                <span className="bg-[#c9c0aa] px-2 py-1">{post.date}</span>
+                <span className="bg-[#c9c0aa] px-2 py-1">
+                  {post.displayDate}
+                </span>
                 {post.tags.map((tag) => (
                   <a
                     key={tag}

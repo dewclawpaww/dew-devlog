@@ -8,6 +8,7 @@ export type Post = {
   slug: string;
   title: string;
   date: string;
+  displayDate: string;
   tags: string[];
   summary: string;
   content: string;
@@ -25,15 +26,26 @@ function normalizeTags(data: { tag?: unknown; tags?: unknown }): string[] {
   return [];
 }
 
+function getDisplayDate(date: string): string {
+  if (!date) {
+    return "";
+  }
+
+  return date.split("T")[0];
+}
+
 export function getPostBySlug(slug: string): Post {
   const fullPath = path.join(postsDirectory, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
+  const date = typeof data.date === "string" ? data.date : "";
+
   return {
     slug,
     title: typeof data.title === "string" ? data.title : slug,
-    date: typeof data.date === "string" ? data.date : "",
+    date,
+    displayDate: getDisplayDate(date),
     tags: normalizeTags(data),
     summary: typeof data.summary === "string" ? data.summary : "",
     content,
